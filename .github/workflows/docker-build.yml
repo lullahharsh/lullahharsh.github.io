@@ -29,3 +29,14 @@ jobs:
       
       - name: Push Docker image
         run: docker push ghcr.io/lullahharsh/my-portfolio:latest
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            docker pull ghcr.io/lullahharsh/my-portfolio:latest
+            docker stop portfolio-container || true
+            docker rm portfolio-container || true
+            docker run -d --name portfolio-container -p 80:80 ghcr.io/lullahharsh/my-portfolio:latest
