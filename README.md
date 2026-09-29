@@ -16,4 +16,4 @@ My personal portfolio website deployed using Docker, GitHub Actions, and AWS EC2
 
 ## CI/CD Pipeline
 
-Code → GitHub → GitHub Actions → Docker → GHCR → AWS EC2 → Live Website
+Code → GitHub → GitHub Actions → Docker → GHCR → Kubernetes → AWS EC2 → Live Website
