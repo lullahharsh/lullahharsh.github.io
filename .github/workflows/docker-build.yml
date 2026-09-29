@@ -26,9 +26,10 @@ jobs:
 
       - name: Build Docker image
         run: docker build -t ghcr.io/lullahharsh/my-portfolio:latest .
-      
+
       - name: Push Docker image
         run: docker push ghcr.io/lullahharsh/my-portfolio:latest
+
       - name: Deploy to EC2
         uses: appleboy/ssh-action@v1
         with:
